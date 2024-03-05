@@ -57,7 +57,7 @@ User requests flow through the router to the controller, who talks to the reposi
 
 ## Usage
 
-This repo 2 API resources. `User` and `Tweet`. Each resource has four endpoints: GET, POST, PUT, and DELETE. There is one more route hello route. The URL for API ( will take 1 min to be active) is [`https://tweez-backend.onrender.com/api/v1/hello`](https://tweez-backend.onrender.com/api/v1/hello)
+This repo 2 API resources. `User` and `Patr`. Each resource has four endpoints: GET, POST, PUT, and DELETE. There is one more route hello route. The URL for API ( will take 1 min to be active) is [`https://tweez-backend.onrender.com/api/v1/hello`](https://tweez-backend.onrender.com/api/v1/hello)
 
 ### User
 
@@ -66,20 +66,20 @@ The User resource represents a user of the app. A user has the following schema:
 | Parameters | Description |
 | --- | --- |
 | userId | unique identifier for the user |
-| tweets | user post(tweets) in array format |
+| Patrs | user post(Patrs) in array format |
 | firstName | First Name of User |
 | lastName | Last Name of User |
 | email | Email of User |
 | createdAt | UTC timing of Date Time |
 
-### Tweet
+### Patr
 
-The Tweet resource represents a tweet of the app. A user has the following schema:
+The Patr resource represents a Patr of the app. A user has the following schema:
 
 | Parameters | Description |
 | --- | --- |
 | userId | unique identifier for the user |
-| adminId | user post(tweets) in array format |
+| adminId | user post(Patrs) in array format |
 | content | First Name of User |
 | createdAt | Last Name of User |
 
