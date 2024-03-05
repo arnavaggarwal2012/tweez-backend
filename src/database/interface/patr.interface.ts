@@ -1,7 +1,7 @@
 import { Document } from "mongoose";
 
-export interface ITweetInterface extends Document{
-    tweetId: string, 
+export interface IPatrInterface extends Document{
+    patrId: string, 
     content: string, 
     createdAt: string, 
     adminId: string

@@ -60,14 +60,14 @@ export const updateUserRepo = async(updatedUser:IUserInterface, userId:string): 
     }
 }
 
-export const updateUserWithTweetIdRepo = async (
+export const updateUserWithPatrIdRepo = async (
   userId: string,
-  tweetId: string
+  patrId: string
 ): Promise<boolean> => {
   try {
     const result = await userModel.findOneAndUpdate(
       { uid: userId },
-      { $push: { tweets: tweetId } }
+      { $push: { patrs: patrId } }
     );
     if (result) {
       return true;

@@ -3,7 +3,7 @@ import { IUserInterface } from "../interface/user.interface";
 
 const userSchema = new Schema<IUserInterface>({
     uid:{type: String , required: true},
-    tweets:{type: [String] , default:[]},
+    patrs:{type: [String] , default:[]},
     firstName:{type: String , default:"User"},
     lastName:{type: String , default:"Name"},
     email:{type: String , required: true},
