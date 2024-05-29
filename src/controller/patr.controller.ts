@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { createPatrRepo, deletePatrRepo, getPatrRepo, updatePatrRepo } from "../repositories/patr.repositories";
+import { createPatrRepo, deletePatrRepo, getPatrRepo, updatePatrRepo, getAllPatrRepo} from "../repositories/patr.repositories";
 import { IPatrInterface } from "../database/interface/patr.interface";
 import { updateUserWithPatrIdRepo } from "../repositories/user.repositories";
 
@@ -18,6 +18,21 @@ export const getPatrController = async (req: Request, res: Response) => {
         res.status(400).json({"error" : error});
     }
 };
+
+export const getAllPatrController = async (req: Request, res: Response) => {
+  try {
+    const patrs = await getAllPatrRepo();
+    if (patrs) {
+      res.status(200).json({ data: patrs});
+    } else {
+      res.status(500).json({ error: "Tweets Not Found" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error });
+  }
+};
+
 
 export const createPatrController = async (req: Request, res: Response) => {
     const patr : IPatrInterface = req.body;

@@ -1,5 +1,8 @@
 import { IPatrInterface } from "../database/interface/patr.interface";
 import patrModel from "../database/models/patr.model";
+import userModel from "../database/models/user.model";
+import mongoose from "mongoose";
+
 
 export const getPatrRepo = async(patrId:string): Promise<IPatrInterface | null> =>{
     try{
@@ -8,6 +11,28 @@ export const getPatrRepo = async(patrId:string): Promise<IPatrInterface | null> 
     }
     catch(error) {
         console.error(error);
+        return null;
+    }
+}
+
+export const getAllPatrRepo = async (): Promise<any[] | null> => {
+    try {
+        const allPatr = await patrModel.find();
+        if (!allPatr || allPatr.length == 0) {
+            return null;
+            }
+            const patrWithUserInfo = await Promise.all(
+        allPatr.map(async (patrs) => {
+        const admin = await userModel.findOne({ uid: patrs.adminId });
+        if (!admin) {
+          return { patrs, admin: null };
+        }
+        return { patrs, admin };
+      })
+    );
+    return patrWithUserInfo;
+    } catch (error) {
+        console.log(error);
         return null;
     }
 }
